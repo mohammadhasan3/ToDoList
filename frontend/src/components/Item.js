@@ -1,5 +1,9 @@
 //style
 import { ItemWrapper } from "../styles";
+
+//Libraries
+import { observer } from "mobx-react";
+
 const Item = ({ name, priority, status }) => {
   return (
     <ItemWrapper>
@@ -10,4 +14,4 @@ const Item = ({ name, priority, status }) => {
   );
 };
 
-export default Item;
+export default observer(Item);

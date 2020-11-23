@@ -12,6 +12,14 @@ export const ItemWrapper = styled.div`
   background-color: #50dfc5;
   width: 500px;
 `;
+export const CreateButtonStyled = styled.button`
+  color: white;
+  background-color: gray;
+  &:hover {
+    color: black;
+    background-color: lime;
+  }
+`;
 
 export const ListWrapper = styled.div`
   display: block;
