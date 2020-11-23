@@ -11,7 +11,6 @@ class ListStore {
   constructor() {
     makeObservable(this, {
       list: observable,
-      fetchList: action,
     });
   }
 }
