@@ -1,6 +1,8 @@
-import axios from "axios";
+//import axios from "axios";
 import { makeObservable, observable, action } from "mobx";
-import slugify from "react-slugify";
+//import slugify from "react-slugify";
+
+import list from "../listdata";
 
 class ListStore {
   list = [

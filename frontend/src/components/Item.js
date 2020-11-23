@@ -1,10 +1,12 @@
-const Item = () => {
+//style
+import { ItemWrapper } from "../styles";
+const Item = ({ name, priority, status }) => {
   return (
-    <div>
-      <p>Study</p>
-      <p>Done</p>
-      <p>Low</p>
-    </div>
+    <ItemWrapper>
+      <p> {name}, </p>
+      <p> priority: {priority}</p>
+      <p>, current status: {status}</p>
+    </ItemWrapper>
   );
 };
 
