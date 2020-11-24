@@ -1,19 +1,24 @@
-//import axios from "axios";
 import { makeObservable, observable, action } from "mobx";
+
+import axios from "axios";
 //import slugify from "react-slugify";
 
-import list from "../listdata";
-
 class ListStore {
-  list = list;
+  list = [];
 
   constructor() {
     makeObservable(this, {
       list: observable,
       createTask: action,
       deleteTask: action,
+      fetchList: action,
     });
   }
+
+  fetchList = async () => {
+    const response = await axios.get("http://localhost:8000/list");
+    this.list = response.data;
+  };
   createTask = (newTask) => {
     newTask.id = this.list[this.list.length - 1].id + 1;
 
@@ -26,5 +31,5 @@ class ListStore {
 }
 
 const listStore = new ListStore();
-
+listStore.fetchList();
 export default listStore;
