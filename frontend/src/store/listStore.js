@@ -16,13 +16,20 @@ class ListStore {
   }
 
   fetchList = async () => {
-    const response = await axios.get("http://localhost:8000/list");
-    this.list = response.data;
+    try {
+      const response = await axios.get("http://localhost:8000/list");
+      this.list = response.data;
+    } catch (error) {
+      console.error("ListStore -> fetchlist -> error", error);
+    }
   };
-  createTask = (newTask) => {
-    newTask.id = this.list[this.list.length - 1].id + 1;
-
-    this.list.push(newTask);
+  createTask = async (newTask) => {
+    try {
+      const response = await axios.post("http://localhost:8000/list", newTask);
+      this.list.push(response.data);
+    } catch (error) {
+      console.error("ListStore -> createTask -> error");
+    }
   };
 
   deleteTask = (taskId) => {
