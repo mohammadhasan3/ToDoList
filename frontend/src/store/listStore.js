@@ -47,14 +47,12 @@ class ListStore {
 
   updateTask = async (updatedTask) => {
     try {
+      const task = this.list.find((task) => task.id === updatedTask.id);
+      task.completed = true;
       await axios.put(
         `http://localhost:8000/list/${updatedTask.id}`,
         updatedTask
       );
-
-      const task = this.list.find((task) => task.id === updatedTask.id);
-
-      task.completed = true;
     } catch (error) {
       console.error("listtore -> updateTask -> error", error);
     }
@@ -62,6 +60,7 @@ class ListStore {
 
   moveTask = (item) => {
     this.finishedTasks.push(item);
+
     console.log(item.id);
   };
 }
