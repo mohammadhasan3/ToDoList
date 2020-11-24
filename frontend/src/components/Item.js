@@ -19,6 +19,9 @@ const Item = ({ item }) => {
       // console.log(`inside if ${box}`);
     } else {
       setBox("on");
+      listStore.updateTask(item);
+      if (item.completed) listStore.moveTask(item);
+
       // console.log(`outside if ${box}`);
     }
   };

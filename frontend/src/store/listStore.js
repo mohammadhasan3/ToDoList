@@ -5,13 +5,17 @@ import axios from "axios";
 
 class ListStore {
   list = [];
+  finishedTasks = [];
 
   constructor() {
     makeObservable(this, {
       list: observable,
+      finishedTasks: observable,
       createTask: action,
       deleteTask: action,
       fetchList: action,
+      updateTask: action,
+      moveTask: action,
     });
   }
 
@@ -32,8 +36,33 @@ class ListStore {
     }
   };
 
-  deleteTask = (taskId) => {
-    this.list = this.list.filter((task) => task.id !== taskId);
+  deleteTask = async (taskId) => {
+    try {
+      await axios.delete(`http://localhost:8000/list/${taskId}`);
+      this.list = this.list.filter((task) => task.id !== taskId);
+    } catch (error) {
+      console.error("ListStore -> deleteTask -> error");
+    }
+  };
+
+  updateTask = async (updatedTask) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/list/${updatedTask.id}`,
+        updatedTask
+      );
+
+      const task = this.list.find((task) => task.id === updatedTask.id);
+
+      task.completed = true;
+    } catch (error) {
+      console.error("listtore -> updateTask -> error", error);
+    }
+  };
+
+  moveTask = (item) => {
+    this.finishedTasks.push(item);
+    console.log(item.id);
   };
 }
 
