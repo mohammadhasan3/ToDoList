@@ -11,7 +11,8 @@ import listStore from "../store/listStore";
 //components
 import DeleteButton from "./buttons/DeleteButton";
 
-const Item = ({ name, priority, status, id }) => {
+const Item = ({ item }) => {
+  const [box, setBox] = useState("");
   const handleChange = () => {
     if (box === "on") {
       setBox("");
@@ -21,8 +22,8 @@ const Item = ({ name, priority, status, id }) => {
       // console.log(`outside if ${box}`);
     }
   };
+  const { id, priority, name } = item;
 
-  const [box, setBox] = useState("");
   if (box === "on") {
     return (
       <>
@@ -31,10 +32,9 @@ const Item = ({ name, priority, status, id }) => {
           <ItemWrapperChecked>
             <p> {name}, </p>
             <p> priority: {priority}</p>
-            <p>, current status: {status}</p>
           </ItemWrapperChecked>
         </label>
-        <DeleteButton taskId={id} setBox={setBox} box={box}></DeleteButton>
+        <DeleteButton taskId={id}></DeleteButton>
         <br></br>
       </>
     );
@@ -46,10 +46,9 @@ const Item = ({ name, priority, status, id }) => {
           <ItemWrapper>
             <p> {name}, </p>
             <p> priority: {priority}</p>
-            <p>, current status: {status}</p>
           </ItemWrapper>
         </label>
-        <DeleteButton taskId={id} setBox={setBox} box={box}></DeleteButton>
+        <DeleteButton taskId={id}></DeleteButton>
         <br></br>
       </>
     );

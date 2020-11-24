@@ -10,7 +10,6 @@ const ListModal = ({ isOpen, closeModal }) => {
   const [task, setTask] = useState({
     name: "",
     priority: "",
-    status: "",
   });
 
   const handleChange = (event) => {
@@ -51,26 +50,13 @@ const ListModal = ({ isOpen, closeModal }) => {
           </div>
           <div className="col-6">
             <label>Priority</label>
-            <input
-              required
-              type="text"
-              name="priority"
-              value={task.priority}
-              className="form-control"
-              onChange={handleChange}
-            />
+            <select name="priority" id="priority" onChange={handleChange}>
+              <option value="default">choose you priority</option>
+              <option value="high">high</option>
+              <option value="miduim">miduim</option>
+              <option value="low">low</option>
+            </select>
           </div>
-        </div>
-        <div className="form-group">
-          <label>Status</label>
-          <input
-            required
-            type="text"
-            name="status"
-            value={task.status}
-            className="form-control"
-            onChange={handleChange}
-          />
         </div>
 
         <CreateButtonStyled>Add</CreateButtonStyled>

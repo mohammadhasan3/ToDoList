@@ -20,10 +20,8 @@ class ListStore {
     this.list.push(newTask);
   };
 
-  deleteTask = (taskId, box, setBox) => {
+  deleteTask = (taskId) => {
     this.list = this.list.filter((task) => task.id !== taskId);
-    setBox("");
-    console.log(box);
   };
 }
 

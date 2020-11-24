@@ -14,15 +14,7 @@ const List = () => {
   return (
     <ListWrapper>
       {listStore.list.map((item) => (
-        <>
-          <Item
-            name={item.name}
-            priority={item.proirity}
-            status={item.status}
-            id={item.id}
-          />
-          {console.log(item)}
-        </>
+        <Item item={item} key={item.id} />
       ))}
       <AddButton />
     </ListWrapper>
