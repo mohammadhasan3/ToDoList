@@ -11,12 +11,19 @@ class ListStore {
     makeObservable(this, {
       list: observable,
       createTask: action,
+      deleteTask: action,
     });
   }
   createTask = (newTask) => {
     newTask.id = this.list[this.list.length - 1].id + 1;
 
     this.list.push(newTask);
+  };
+
+  deleteTask = (taskId, box, setBox) => {
+    this.list = this.list.filter((task) => task.id !== taskId);
+    setBox("");
+    console.log(box);
   };
 }
 

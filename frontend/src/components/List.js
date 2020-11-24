@@ -19,6 +19,7 @@ const List = () => {
             name={item.name}
             priority={item.proirity}
             status={item.status}
+            id={item.id}
           />
           {console.log(item)}
         </>
