@@ -16,13 +16,10 @@ const Item = ({ item }) => {
   const handleChange = () => {
     if (box === "on") {
       setBox("");
-      // console.log(`inside if ${box}`);
     } else {
       setBox("on");
       listStore.updateTask(item);
       if (item.completed) listStore.moveTask(item);
-
-      // console.log(`outside if ${box}`);
     }
   };
   const { id, priority, name } = item;

@@ -14,10 +14,13 @@ const List = () => {
   return (
     <>
       <ListWrapper>
-        {listStore.list.map((item) => (
-          <Item item={item} key={item.id} />
-        ))}
-        <AddButton />
+        <h3>To Do List</h3>
+        <AddButton className="addbutton" />
+        {listStore.list
+          .filter((item) => item.completed === false)
+          .map((item) => (
+            <Item item={item} key={item.id} />
+          ))}
       </ListWrapper>
 
       <ListWrapper>

@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { CreateButtonStyled } from "../../styles";
+import { CreateButtonStyled, TextBox } from "../../styles";
 import { BsXSquare } from "react-icons/bs";
 
 //Stores
@@ -50,12 +50,12 @@ const ListModal = ({ isOpen, closeModal }) => {
           </div>
           <div className="col-6">
             <label>Priority</label>
-            <select name="priority" id="priority" onChange={handleChange}>
+            <TextBox name="priority" id="priority" onChange={handleChange}>
               <option value="default">choose you priority</option>
               <option value="high">high</option>
               <option value="miduim">miduim</option>
               <option value="low">low</option>
-            </select>
+            </TextBox>
           </div>
         </div>
 
