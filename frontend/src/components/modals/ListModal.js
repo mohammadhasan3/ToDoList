@@ -18,7 +18,6 @@ const ListModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // listStore.createGame(task);
     listStore.createTask(task);
     closeModal();
   };
@@ -53,7 +52,7 @@ const ListModal = ({ isOpen, closeModal }) => {
             <TextBox name="priority" id="priority" onChange={handleChange}>
               <option value="default">choose you priority</option>
               <option value="high">high</option>
-              <option value="miduim">miduim</option>
+              <option value="middle">miduim</option>
               <option value="low">low</option>
             </TextBox>
           </div>
